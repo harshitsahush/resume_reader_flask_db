@@ -65,3 +65,20 @@ def fetch_from_db(conn, cursor, unique_id):
     temp = cursor.fetchall()
     conn.commit()
     return temp
+
+def convert(data):
+    #given data is list of tuples
+    #convert to list of dicts
+    new_data = []
+    for ele in data:
+        temp = {}
+        ele = list(ele)
+        temp["name"] = ele[0]
+        temp["email"] = ele[1]
+        temp["contact"] = ele[2]
+        temp["skills"] = ele[3]
+        temp["experience"] = ele[4]
+
+        new_data.append(temp)
+
+    return new_data

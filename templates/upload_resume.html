@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Resume</title>
+    <style>
+        table{
+            border : 1px solid black;
+            border-collapse: collapse;
+            padding :10px;
+            text-align: center;
+        }
+
+        th, td{
+            padding :10px;
+            border : 1px solid black;
+        }
+    </style>
 </head>
 <body>
     <h1>Resume Extractor</h1>
@@ -15,8 +28,28 @@
             <input type="submit">
         </p>
         <p>
-            {{ res }}
+            {% if res %}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Skills</th>
+                    <th>Experience</th>
+                </tr>
+                {% for row in res %}
+                    <tr>
+                        <td>{{row.name}}</td>
+                        <td>{{row.email}}</td>
+                        <td>{{row.contact}}</td>
+                        <td>{{row.skills}}</td>
+                        <td>{{row.experience}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
         </p>
     </form>
+    
 </body>
 </html>

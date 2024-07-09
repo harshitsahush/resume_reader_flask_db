@@ -39,9 +39,7 @@ def process():
         save_to_db(conn, cursor, session["uid"], response_dict)
         db_res = fetch_from_db(conn, cursor, session["uid"])
 
-        # print(db_res)
-
-        db_res = pd.DataFrame(db_res)
+        db_res = convert(db_res)        #since jinja2 is best suited for dicts, convert from (list of tuples) to (list of dicts)
 
         return render_template("upload_resume.html", res = db_res)
 
